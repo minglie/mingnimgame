@@ -1,7 +1,12 @@
-const config={
-    env:"prod",
-    baseUrl:u=>""+u,
+prodConfig={
+    baseUrl:  u=>"/mingdev"+u,
+}
+
+devConfig={
+    baseUrl:  u=>""+u,
 }
 
 
-M.config=config;
+
+
+M.config=prodConfig;
