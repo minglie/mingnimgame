@@ -6,3 +6,35 @@
 [v-cloak]{
     display: none;
 }
+
+
+span {
+    font-size: 2em;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+.dui{
+    border: 3px black solid;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.title-item{
+    height: 8vw;
+    width: 20vw;
+    text-align: center;
+}
+.item {
+    height: 20vw;
+    width: 20vw;
+    text-align: center;
+    margin-bottom: 2vw;
+    touch-action: none;
+}
+
+.active {
+    background-image: url("https://ming-bucket-01.oss-cn-beijing.aliyuncs.com/static/img/img/icon/img/yiyuan.png");
+    background-size: 100% 100%;
+}
