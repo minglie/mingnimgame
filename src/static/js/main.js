@@ -33,8 +33,6 @@ const vueConstructorData={
     },
     methods:{
         changeVal(dui, value, index){
-
-            console.log(dui, value, index);
             switch (dui){
                 case 1:{
                     this.oneDui[index] ^=1;
@@ -48,7 +46,6 @@ const vueConstructorData={
                     this.threeDui[index] ^=1;
                     break;
                 }
-
             }
         }
     }

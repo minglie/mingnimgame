@@ -16,12 +16,14 @@ span {
     justify-content: space-around;
 }
 .dui{
-    border: 3px black solid;
+    border: 1px black solid;
     display: flex;
     flex-direction:column;
     justify-content: center;
 }
 .title-item{
+    font-size: 5vw;
+    font-weight: bold;
     height: 8vw;
     width: 20vw;
     text-align: center;
