@@ -5,12 +5,13 @@ let socketIoWebPlugin= new SocketIoWebPlugin({
     host:"",
     path:"",
     key:"SocketIoWebPlugin",
-    clientId:"A"
+    clientId: new Date().getTime()
 });
 MIO.socketIoWebPluginParam={
     async call(msg){
-
-        console.log(msg,"AAAAAAAAA")
+        if(msg.method=="call.socketSetDui" && msg.clientId !=socketIoWebPlugin.clientId){
+            M.mainPage.dataList=msg.params.dataList;
+        }
     }
 }
 
@@ -21,38 +22,56 @@ app.use(socketIoWebPlugin,MIO.socketIoWebPluginParam)
 
 const vueConstructorData={
     async mounted() {
-
-        //MIO.socketConnect();
+        M.mainPage=this;
+        let r= await M.request.get("/getDui");
+         this.dataList=r.data;
+         MIO.socketConnect();
     },
     data() {
         return {
-            oneDui:  [1,1,1,0,0,0,0],
-            twoDui:  [1,1,1,1,1,0,0],
-            threeDui:[1,1,1,1,1,1,1],
+            dataList:{
+                oneDui:  [],
+                twoDui:  [],
+                threeDui:[],
+            }
         }
     },
     methods:{
         changeVal(dui, value, index){
             switch (dui){
                 case 1:{
-                    this.oneDui[index] ^=1;
+                    this.dataList.oneDui[index] ^=1;
+                    this.postSetDui();
                     break;
                 }
                 case 2:{
-                    this.twoDui[index] ^=1;
+                    this.dataList.twoDui[index] ^=1;
+                    this.postSetDui();
                     break;
                 }
                 case 3:{
-                    this.threeDui[index] ^=1;
+                    this.dataList.threeDui[index] ^=1;
+                    this.postSetDui();
                     break;
                 }
             }
+        },
+        async postSetDui(){
+            let r= await M.request.post("/setDui?clientId="+socketIoWebPlugin.clientId,
+                {
+                    dataList: this.dataList
+                }
+               );
+
+        },
+        async gameReset(){
+             M.request.get("/gameReset");
         }
     }
-
 }
 
 
 const {createApp}=Vue;
 const vueApp= createApp(vueConstructorData);
+M.vueApp=vueApp;
 vueApp.mount('#main');

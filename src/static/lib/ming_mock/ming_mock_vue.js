@@ -378,7 +378,6 @@
         let reqHeader=headers||{
             'Content-Type': 'application/json'
         }
-        reqHeader.token=  M.p.userInfo.lj_token;
         return reqHeader;
     }
 

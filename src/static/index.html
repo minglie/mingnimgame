@@ -5,12 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RunCode</title>
+    <title>三星堆</title>
     <link rel="stylesheet" href="https://weui.io/style/weui.css">
-    <script src="https://minglie.gitee.io/mingpage/static/public/weui/js/zepto.min.js"></script>
-    <script src="https://minglie.gitee.io/mingpage/static/public/weui/js/weui.min1.2.3.js"></script>
     <script src="./lib/socket.io.js"></script>
     <script src="./lib/ming_mock/ming_mock_vue.js"></script>
+    <script src="./js/config.js"></script>
     <script src="https://minglie.gitee.io/mingpage/static/public/vue/3.2/vue.global.prod.min.js"></script>
     <link rel="stylesheet" href="./css/main.css"/>
 </head>
@@ -22,7 +21,7 @@
             <div class="title-item">
                 第一堆
             </div>
-            <template v-for="(value, index) in oneDui" :key="index">
+            <template v-for="(value, index) in dataList.oneDui" :key="index">
                 <div @click="changeVal(1,value, index)" :class="[value?'item active':'item']">
                 </div>
             </template>
@@ -31,7 +30,7 @@
             <div class="title-item">
                 第二堆
             </div>
-            <div v-for="(value, index) in twoDui" :key="index">
+            <div v-for="(value, index) in dataList.twoDui" :key="index">
                 <div @click="changeVal(2,value, index)" :class="[value?'item active':'item']"></div>
             </div>
         </div>
@@ -39,11 +38,16 @@
             <div class="title-item">
                 第三堆
             </div>
-            <div v-for="(value, index) in threeDui" :key="index">
+            <div v-for="(value, index) in dataList.threeDui" :key="index">
                 <div @click="changeVal(3,value, index)" :class="[value?'item active':'item']"></div>
             </div>
         </div>
     </div>
+    <a @click="gameReset" class="btnBotton weui-btn weui-btn_primary"   href="javascript:">
+        <div class="weui-cell__bd ">
+            <p>重新开始</p>
+        </div>
+    </a>
 </div>
 </body>
 
