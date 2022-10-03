@@ -5,7 +5,7 @@ class SocketIoWebPlugin {
         this.clientId=socketIoConfig.clientId;
         this.path=socketIoConfig.path;
         this.host=socketIoConfig.host;
-        this.unionid="";
+        this.socketIoConfig=socketIoConfig;
         this.connectFun=()=>{};
         this.disConnectFun=()=>{};
         this.eventFun=()=>{};
@@ -20,15 +20,11 @@ class SocketIoWebPlugin {
             that.socket.connect();
             return;
         }
-        let socketConfig=r.data;
-        this.host=socketConfig.socketioHost;
-        this.clientId=socketConfig.clientId;
-        this.unionid=M.p.userInfo.unionid;
+        this.clientId= that.socketIoConfig.clientId;
         var socket = window.io(
-            that.host+ '/?clientId='+this.clientId
+            that.host+ '?clientId='+this.clientId
             ,{path:``});
         this.socket=socket;
-
         socket.on("event",async function (msg) {
             that.eventFun(msg);
         });

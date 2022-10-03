@@ -1,7 +1,27 @@
 var M=require("ming_node");
 
 class SocketIoServerPlugin {
+
     socketClientList=[];
+
+    constructor(socketIoConfig) {
+        this.key=socketIoConfig.key;
+        this.unionid="";
+        this.connectFun=()=>{};
+        this.disConnectFun=()=>{};
+        this.eventFun=()=>{};
+        this.callFun=()=>{};
+        this.replyFun=()=>{};
+        this.JsonRpcReplayMap={}
+    }
+
+    getByClientId(clientId){
+        let n = socketClientList.indexOf(clientId);
+        if(n !=-1) {
+           return  socketClientList[n];
+        }
+        return null;
+    }
 
     install(app,server){
         let that=this;
@@ -28,12 +48,19 @@ class SocketIoServerPlugin {
                 console.log("disconnect")
             });
         });
-        MIO.socketEmitCall=async (method,params)=>{
+        MIO.socketEmitCall=async (method,params,id,callback)=>{
             let reqBody={
-                "method": method,
+                "method": "call."+method,
                 "params": params
             };
-            io.emit("event",reqBody);
+            if(id){
+                reqBody.id=id;
+                that.JsonRpcReplayMap["reply."+ method]={
+                    id: id,
+                    callback:callback
+                };
+            }
+            io.emit("call",reqBody);
         }
 
     }
