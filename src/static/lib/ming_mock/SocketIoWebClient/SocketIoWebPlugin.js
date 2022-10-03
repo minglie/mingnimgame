@@ -3,15 +3,14 @@ class SocketIoWebPlugin {
     constructor(socketIoConfig) {
         this.key=socketIoConfig.key;
         this.clientId=socketIoConfig.clientId;
-        this.path=socketIoConfig.path;
-        this.host=socketIoConfig.host;
+        this.path=M.config.baseUrl("");
+        this.host="";
         this.socketIoConfig=socketIoConfig;
         this.connectFun=()=>{};
         this.disConnectFun=()=>{};
         this.eventFun=()=>{};
         this.callFun=()=>{};
         this.replayFun=()=>{};
-        this.datagramArray=[]
         this.JsonRpcReplayMap={}
     }
     async connect(){
@@ -23,7 +22,7 @@ class SocketIoWebPlugin {
         this.clientId= that.socketIoConfig.clientId;
         var socket = window.io(
             that.host+ '?clientId='+this.clientId
-            ,{path:``});
+            ,{path:that.path+"/socket.io"});
         this.socket=socket;
         socket.on("event",async function (msg) {
             that.eventFun(msg);
