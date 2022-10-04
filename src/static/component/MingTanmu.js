@@ -70,7 +70,7 @@ class MingTanmu extends MingRouter.WebComponent {
         newli.style.backgroundColor=speackObj.color || this.getRandomColor();
         newli.style.top=this.getTanmuHeight(speackObj.position)
         newli.h=0;
-        newli.speed=5;
+        newli.speed=8;
         if(newli.innerHTML.includes("抽到")){
             newli.speed=0.3;
             newli.enableSpeck=true;

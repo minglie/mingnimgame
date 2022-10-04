@@ -35,6 +35,12 @@ app.post("/setDui",(req,res)=>{
     res.send(M.successResult("ok"))
 })
 
+
+app.post("/haole",(req,res)=>{
+    MIO.socketEmitCall("socketHaole",req.params);
+    res.send(M.successResult("ok"))
+})
+
 app.get("/gameReset",(req,res)=>{
     dataList=defaultDataList;
     MIO.socketEmitCall("socketSetDui",{

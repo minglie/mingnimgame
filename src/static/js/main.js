@@ -9,8 +9,11 @@ let socketIoWebPlugin= new SocketIoWebPlugin({
 });
 MIO.socketIoWebPluginParam={
     async call(msg){
-        if(msg.method=="call.socketSetDui" && msg.clientId !=socketIoWebPlugin.clientId){
+        if(msg.method=="call.socketSetDui" && msg.params.clientId !=socketIoWebPlugin.clientId){
             M.mainPage.dataList=msg.params.dataList;
+        }
+        if(msg.method=="call.socketHaole" && msg.params.clientId !=socketIoWebPlugin.clientId){
+            M.mainPage.youhaole();
         }
     }
 }
@@ -65,7 +68,11 @@ const vueConstructorData={
                     dataList: this.dataList
                 }
                );
-
+        },
+        async gameReset(){
+             M.request.get("/gameReset");
+        },
+        async myhaole(){
             document.querySelector("ming-tanmu").wrapWebComponent.pushMsg(
                 {
                     text:`<img
@@ -77,10 +84,23 @@ const vueConstructorData={
                     color:`${MY_COLOR}`
                 }
             );
-
+            let r= await M.request.post("/haole",{
+                  clientId:socketIoWebPlugin.clientId
+                }
+            );
         },
-        async gameReset(){
-             M.request.get("/gameReset");
+        async youhaole(){
+            document.querySelector("ming-tanmu").wrapWebComponent.pushMsg(
+                {
+                    text:`<img
+                        width="30vw"
+                        style="display: inline-block;border-radius: 10vw"
+                        src="${YOU_AVATOR}" >
+                             <span style="font-size:4vw; display: inline-block; transform: translateY(-2vw)">好了 </span>
+                        `,
+                    color:`${YOU_COLOR}`
+                }
+            );
         }
     }
 }
