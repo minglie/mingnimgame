@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://weui.io/style/weui.css">
     <script src="./lib/socket.io.js"></script>
     <script src="./lib/ming_mock/ming_mock_vue.js"></script>
+    <script src="./lib/ming_mock/ming_router.js"></script>
     <script src="./js/config.js"></script>
     <script src="https://minglie.gitee.io/mingpage/static/public/vue/3.2/vue.global.prod.min.js"></script>
     <link rel="stylesheet" href="./css/main.css"/>
@@ -16,6 +17,9 @@
 
 <body>
 <div  v-cloak id="main" >
+    <div class="tanmu">
+        <ming-tanmu></ming-tanmu>
+    </div>
     <div class="container">
         <div class="dui">
             <div class="title-item">
@@ -43,11 +47,23 @@
             </div>
         </div>
     </div>
-    <a @click="gameReset" class="btnBotton weui-btn weui-btn_primary"   href="javascript:">
-        <div class="weui-cell__bd ">
-            <p>重新开始</p>
-        </div>
-    </a>
+    <div class="btnBotton">
+
+            <a @click="gameReset" class="weui-btn weui-btn_primary"   href="javascript:">
+                <div class="weui-cell__bd ">
+                    <p>重新开始</p>
+                </div>
+            </a>
+
+            <a @click="gameReset" class="weui-btn weui-btn_primary"   href="javascript:">
+                <div class="weui-cell__bd ">
+                    <p>好了</p>
+                </div>
+            </a>
+
+
+    </div>
+
 </div>
 </body>
 

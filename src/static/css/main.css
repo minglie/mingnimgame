@@ -39,8 +39,21 @@ span {
 .active {
     background-image: url("https://ming-bucket-01.oss-cn-beijing.aliyuncs.com/static/img/img/icon/img/yiyuan.png");
     background-size: 100% 100%;
+    opacity: 0.9;
 }
 
 .btnBotton{
-    margin-top: 2vw;
+    margin-top: 3vw;
+    display: flex;
+    justify-content: center;
+}
+.weui-btn+.weui-btn{
+    margin-top: 0;
+}
+
+.tanmu{
+    top: 10vw;
+    position: absolute;
+    height: 50vw;
+    z-index: -1;
 }

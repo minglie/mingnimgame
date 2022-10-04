@@ -1,0 +1,146 @@
+<style>
+    #tanmuInputId{
+        width: 60vw;
+        height: 10vw;
+        border-radius: 6vw;
+        border: rgb(32,32,32);
+        margin-left: 10vw;
+        background-color: rgb(44,44,44);
+        color: white;
+        outline: none;
+        text-indent:2vw;
+    }
+
+    #tanmuInputId::-webkit-input-placeholder { /* WebKit browsers */
+        color: rgb(136,134,148);
+        font-size: 16px;
+    }
+
+    .button_title{
+        color: white;
+        font-size: 4vw;
+        text-indent:4vw;
+    }
+
+    #minginputId{
+        display: block;
+        background: rgb(32,32,32);
+        width: 100vw;
+        height: 100vh;
+        top:30vh;
+        left: 0vw;
+        position: absolute;
+     
+    }
+
+    .tanmuInputDiv  button{
+        position: relative;
+        height: 10vw;
+        width: 20vw;
+        border-width: 0pt;
+        border-radius: 10vw;
+        color: white;
+        background: rgb(133,132,148);
+        margin-left: 2vw;
+        margin-top: 5vw;
+    }
+
+
+
+    .tanmuInputDiv .btn_kujin{
+        color: white;
+        background: linear-gradient(
+                to right,
+                #F76B1C,
+                #FAD961);
+    }
+
+    .tanmuInputDiv .btn_xuancai{
+        color: white;
+        background: linear-gradient(
+                to right,
+                #FF5ACC,
+                #FAD961);
+    }
+
+    .tanmuInputDiv .btn_xingdong{
+        background: linear-gradient(
+                to right,
+                #FF2525,
+                #ffe53b);
+    }
+
+
+    .tanmuInputDiv .btn_tangsancai{
+        color: blue;
+        border: blue 1px solid;
+        background-color: rgb(32,32,32);
+    }
+    .tanmuInputDiv .btn_xiaowufen{
+        color: pink;
+        border: pink 1px solid;
+        background-color: rgb(32,32,32);
+    }
+    .tanmuInputDiv .btn_cheng{
+        color: orange;
+        border: orange 1px solid;
+        background-color: rgb(32,32,32);
+    }
+    .tanmuInputDiv .btn_hong{
+        color: red;
+        border: red 1px solid;
+        background-color: rgb(32,32,32);
+    }
+    .tanmuInputDiv .btn_zi{
+        color: purple;
+        border: purple 1px solid;
+        background-color: rgb(32,32,32);
+    }
+    .tanmuInputDiv .btn_lv{
+        color: green;
+        border: green 1px solid;
+        background-color: rgb(32,32,32);
+    }
+
+    .tanmuInputDiv .sel{
+        
+        border: ${this.state.selectColor} 4px solid;
+        border-top-left-radius: 0%;
+    }
+
+
+   
+    .tanmuInputDiv .sel::before{
+        position: absolute;
+        top: -1vw;
+        left: 0;
+        font-size: large;
+        font-weight :700;
+        content: "✓";
+        color: white;
+    }
+
+    .huixuanbtnDiv{
+        margin-top: 10vw;
+    }
+    .tanmucolorDiv{
+        margin-top: 10vw;
+    }
+
+</style>
+
+ 
+
+<div id="minginputId" class="tanmuInputDiv">
+    <input id="tanmuInputId" value="${this.state.value}" placeholder="炫彩颜色,让你的弹幕脱颖而出">
+    <button onclick="${this.selfName}.send()">发送</button>
+    <div class="tanmucolorDiv">
+        <div class="button_title">弹幕颜色</div>
+        <button onclick="${this.selfName}.btnClick('蓝')"  class="btn_tangsancai">蓝</button>
+        <button onclick="${this.selfName}.btnClick('粉')"  class="btn_xiaowufen">粉</button>
+        <button onclick="${this.selfName}.btnClick('橙')"  class="btn_cheng">橙</button>
+        <button onclick="${this.selfName}.btnClick('红')"  class="btn_hong">红</button>
+        <button onclick="${this.selfName}.btnClick('紫')"  class="btn_zi">紫</button>
+        <button onclick="${this.selfName}.btnClick('绿')"  class="btn_lv">绿</button>
+    </div>
+</div>
