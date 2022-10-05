@@ -7,7 +7,6 @@ https://www.bilibili.com/video/BV1nt4y1A7Nw
 # 游戏原理
 https://lucd6w.yuque.com/docs/share/f4ea7513-95f2-4a13-bdd1-5ffdf0a4c7f2?#IVeen
 
-
 # 启动项目
 ```bash
 git clone git@gitee.com:minglie/mingnimgame.git
