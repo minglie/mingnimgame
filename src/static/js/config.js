@@ -9,4 +9,4 @@ devConfig={
 
 
 
-M.config=prodConfig;
+M.config=devConfig;
